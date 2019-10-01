@@ -13,9 +13,9 @@ Use `Node.js` and `Express` to build an API that performs _CRUD_ operations on `
 
 ### Project Setup
 
-- **Fork** and **Clone** this repository.
-- **CD into the folder** where you cloned the repository.
-- Type `npm install` to download all dependencies.
+x- **Fork** and **Clone** this repository.
+x- **CD into the folder** where you cloned the repository.
+x- Type `npm install` to download all dependencies.
 - To start the server, type `npm run server` from the root folder (where the _package.json_ file is). The server is configured to restart automatically as you make changes.
 
 ### Database Persistence Helpers
@@ -86,19 +86,19 @@ Configure the API to handle to the following routes:
 
 When the client makes a `POST` request to `/api/posts`:
 
-- If the request body is missing the `title` or `contents` property:
+x- If the request body is missing the `title` or `contents` property:
 
   - cancel the request.
   - respond with HTTP status code `400` (Bad Request).
   - return the following JSON response: `{ errorMessage: "Please provide title and contents for the post." }`.
 
-- If the information about the _post_ is valid:
+x- If the information about the _post_ is valid:
 
   - save the new _post_ the the database.
   - return HTTP status code `201` (Created).
   - return the newly created _post_.
 
-- If there's an error while saving the _post_:
+x- If there's an error while saving the _post_:
   - cancel the request.
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON object: `{ error: "There was an error while saving the post to the database" }`.
@@ -110,7 +110,7 @@ When the client makes a `POST` request to `/api/posts/:id/comments`:
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
 
-- If the request body is missing the `text` property:
+x- If the request body is missing the `text` property:
 
   - cancel the request.
   - respond with HTTP status code `400` (Bad Request).
@@ -122,14 +122,14 @@ When the client makes a `POST` request to `/api/posts/:id/comments`:
   - return HTTP status code `201` (Created).
   - return the newly created _comment_.
 
-- If there's an error while saving the _comment_:
+x- If there's an error while saving the _comment_:
   - cancel the request.
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON object: `{ error: "There was an error while saving the comment to the database" }`.
 
 When the client makes a `GET` request to `/api/posts`:
 
-- If there's an error in retrieving the _posts_ from the database:
+x- If there's an error in retrieving the _posts_ from the database:
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The posts information could not be retrieved." }`.
@@ -141,7 +141,7 @@ When the client makes a `GET` request to `/api/posts/:id`:
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
 
-- If there's an error in retrieving the _post_ from the database:
+x- If there's an error in retrieving the _post_ from the database:
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The post information could not be retrieved." }`.
@@ -153,19 +153,19 @@ When the client makes a `GET` request to `/api/posts/:id/comments`:
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
 
-- If there's an error in retrieving the _comments_ from the database:
+x- If there's an error in retrieving the _comments_ from the database:
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The comments information could not be retrieved." }`.
 
 When the client makes a `DELETE` request to `/api/posts/:id`:
 
-- If the _post_ with the specified `id` is not found:
+x- If the _post_ with the specified `id` is not found:
 
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
 
-- If there's an error in removing the _post_ from the database:
+x- If there's an error in removing the _post_ from the database:
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The post could not be removed" }`.

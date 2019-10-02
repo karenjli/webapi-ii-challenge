@@ -62,12 +62,10 @@ router.post("/:id/comments", (req, res) => {
               res.status(201).json(cm);
             })
             .catch(error => {
-              res
-                .status(500)
-                .json({
-                  error:
-                    "There was an error while saving the comment to the database",
-                });
+              res.status(500).json({
+                error:
+                  "There was an error while saving the comment to the database",
+              });
             });
         }
       })
@@ -157,14 +155,26 @@ router.put("/:id", (req, res) => {
       errorMessage: "Please provide title and contents for the post.",
     });
   } else {
-    db.update(updateId, update)
-      .then(res => {
-        res.json(res);
+    db.findById(updateId)
+      .then(article => {
+        if (!article.length > 0) {
+          res.status(404).json({
+            message: "The post with the specified ID does not exist.",
+          });
+        } else {
+          db.update(updateId, update)
+            .then(post => {
+              res.status(200).json({ message: "IT WORKS" });
+            })
+            .catch(error => {
+              res
+                .status(500)
+                .json({ error: "The post information could not be modified." });
+            });
+        }
       })
       .catch(error => {
-        res
-          .status(500)
-          .json({ error: "The post information could not be modified." });
+        res.status(500).json({ error: "Second catch." });
       });
   }
 });
